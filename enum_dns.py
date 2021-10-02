@@ -5,7 +5,7 @@ import os
 import sys
 import time
 
-OUTFILE = os.path.abspath("/tmp/dns_{0}.log".format(time.strftime("%d-%b-%Y", time.gmtime())))
+OUTFILE = os.path.abspath("{0}/logs/dns_{1}.log".format(os.path.dirname(os.path.realpath(__file__)), time.strftime("%d-%b-%Y", time.gmtime())))
 
 
 def init(logfile):
