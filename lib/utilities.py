@@ -5,6 +5,26 @@ import time
 
 OUTFILE = os.path.abspath("{0}/../logs/dns_{1}.log".format(os.path.dirname(os.path.realpath(__file__)), time.strftime("%d-%b-%Y", time.gmtime())))
 
+NO_REMOVE = []
+NAMECHEAP_DOMAINS = []
+BASE_IP = ''
+
+
+def get_provider(domain):
+	for d in NAMECHEAP_DOMAINS:
+		if d.lower() in domain:
+			return 'namecheap'
+
+	return 'godaddy'
+
+
+def is_restricted(domain):
+	for d in NO_REMOVE:
+		if d.lower() == domain.lower():
+			return True
+
+	return False
+
 
 def init(logfile):
 	"""
