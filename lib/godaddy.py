@@ -10,8 +10,8 @@ class GoDaddy(DNS):
 	GD_ACTION_TEMPLATE = {
 		'provider_name': 'godaddy',
 		'godaddy': {
-			'auth_key': '',
-			'auth_secret': ''
+			'auth_key': utilities.parse_config('godaddy', 'auth_key'),
+			'auth_secret': utilities.parse_config('godaddy', 'auth_secret')
 		}
 	}
 
@@ -33,6 +33,8 @@ class GoDaddy(DNS):
 
 		if show is True:
 			logging.info(response)
+
+		print(response[0]['content'])
 
 		if response[0]['content'] != self.content:
 			return False

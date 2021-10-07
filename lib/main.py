@@ -15,7 +15,7 @@ class DNS(object):
 
 		self.provider = None
 
-		# _acme-challenge.esxi.rednet.ninja
+		# _acme-challenge.esxi.bar.com
 		self.challenge_domain = challenge_domain
 		self.challenge_subdomain = None
 		self.full_domain = None
@@ -23,10 +23,10 @@ class DNS(object):
 		self.subdomain = None
 
 	def init(self):
-		# esxi.rednet.ninja
+		# esxi.bar.com
 		self.full_domain = self.challenge_domain.replace('_acme-challenge.', '')
 
-		# rednet.ninja
+		# bar.com
 		self.base_domain = '.'.join(self.challenge_domain.split('.')[-2:])
 
 		# esxi
