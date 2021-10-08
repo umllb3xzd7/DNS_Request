@@ -10,9 +10,9 @@ class Namecheap(DNS):
 	NC_ACTION_TEMPLATE = {
 		'provider_name': 'namecheap',
 		'namecheap': {
-			'auth_token': '',
-			'auth_username': '',
-			'auth_client_ip': '',
+			'auth_token': utilities.parse_config('namecheap', 'auth_token'),
+			'auth_username': utilities.parse_config('namecheap', 'auth_username'),
+			'auth_client_ip': utilities.parse_config('namecheap', 'auth_client_ip'),
 			'auth_sandbox': False
 		}
 	}

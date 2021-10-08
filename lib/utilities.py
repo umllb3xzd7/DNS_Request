@@ -2,12 +2,30 @@ import logging
 import os
 import sys
 import time
+import yaml
 
+CONFIG = os.path.abspath("{0}/../config.yml".format(os.path.dirname(os.path.realpath(__file__))))
 OUTFILE = os.path.abspath("{0}/../logs/dns_{1}.log".format(os.path.dirname(os.path.realpath(__file__)), time.strftime("%d-%b-%Y", time.gmtime())))
 
-NO_REMOVE = []
-NAMECHEAP_DOMAINS = []
-BASE_IP = ''
+
+def parse_config(item, subkey=None):
+	"""
+	Parse yaml configuration file.
+	"""
+	with open(os.path.abspath(CONFIG), 'r') as f:
+		config_data = yaml.safe_load(f)
+
+	if subkey is None:
+		config_item = config_data[item]
+	else:
+		config_item = config_data[item][subkey]
+
+	return config_item
+
+
+NO_REMOVE = parse_config('general', 'restricted')
+NAMECHEAP_DOMAINS = parse_config('namecheap', 'domains')
+BASE_IP = parse_config('general', 'base_ip')
 
 
 def get_provider(domain):

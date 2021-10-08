@@ -1,0 +1,18 @@
+---
+godaddy:
+  auth_key: abc123
+  auth_secret: abc123
+
+namecheap:
+  auth_token: abc123
+  auth_username: foobar
+  auth_client_ip: 127.0.0.1
+  domains:
+    - a.com
+    - b.com
+
+general:
+  base_ip: 127.0.0.1
+  restricted:
+    - c.com
+    - d.com
